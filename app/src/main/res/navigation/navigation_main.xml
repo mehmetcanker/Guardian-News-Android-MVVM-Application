@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/navigation_main"
+            app:startDestination="@id/newsList">
+
+    <fragment
+            android:id="@+id/newsList"
+            android:name="com.canker.news.ui.pages.newslist.NewsListFragment"
+            android:label="NewsListFragment">
+        <deepLink app:uri="https://mcanker.github.io"/>
+        <action
+                android:id="@+id/action_home_to_newsDetail"
+                app:destination="@id/newsDetail"
+                app:popEnterAnim="@anim/fab_slide_in_from_left"
+                app:popExitAnim="@anim/fab_slide_out_to_right"
+                app:enterAnim="@anim/fab_slide_in_from_right"
+                app:exitAnim="@anim/fab_slide_out_to_left"
+                app:popUpTo="@+id/newsList"/>
+    </fragment>
+    <fragment
+            android:id="@+id/newsDetail"
+            android:name="com.canker.news.ui.pages.newsdetail.NewsDetailFragment"
+            android:label="NewsDetailFragment"/>
+
+</navigation>

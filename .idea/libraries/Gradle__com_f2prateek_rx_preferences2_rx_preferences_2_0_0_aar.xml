@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.f2prateek.rx.preferences2:rx-preferences:2.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-rx-preferences-2.0.0.aar/c347d38e68434be7f19e4964c21456d8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-rx-preferences-2.0.0.aar/c347d38e68434be7f19e4964c21456d8/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.f2prateek.rx.preferences2/rx-preferences/2.0.0/71faead742089b17c8e316667af2d1233c4af92/rx-preferences-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

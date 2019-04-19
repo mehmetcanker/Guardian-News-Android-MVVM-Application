@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="def_small_margin">4dp</dimen>
+    <dimen name="card_padding">4dp</dimen>
+    <dimen name="def_small_avatar_size">24dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+
+    <dimen name="flowlayout_horizontal_padding">5dp</dimen>
+    <dimen name="flowlayout_vertical_padding">5dp</dimen>
+
+    <dimen name="card_insets">8dp</dimen>
+
+</resources>

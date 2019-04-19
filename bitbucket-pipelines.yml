@@ -1,0 +1,25 @@
+image: uber/android-build-environment:latest
+
+
+pipelines:
+  default:
+    - step:
+        script:
+        - echo "Runs on all branches"
+  branches:
+    development:
+      - step:
+          caches:
+            - gradle
+          script:
+            - ./build-dev.sh
+    master:
+       - step:
+          caches:
+             - gradle
+          script:
+             - ./build-prod.sh
+
+definitions:
+  caches:
+    gradlewrapper: ~/.gradle/wrapper

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.evernote:android-state:1.4.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-state-1.4.1.aar/b8725b696a0e0078208cc7480d3dc093/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-state-1.4.1.aar/b8725b696a0e0078208cc7480d3dc093/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.evernote/android-state/1.4.1/913bf82323b0bac5cd1ac8b8299c85390d2b462d/android-state-1.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

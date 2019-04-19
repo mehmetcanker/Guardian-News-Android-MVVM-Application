@@ -1,0 +1,110 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+//todo add fabric
+//apply plugin: 'io.fabric'
+
+def buildVersionName = "0.0.2"
+def buildVersionCode = new Date().format("yyMMddHHmm", TimeZone.getTimeZone("Europe/Istanbul")).
+        toInteger()
+def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone("UTC"))
+
+
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+    defaultConfig {
+        applicationId "com.canker.news"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.compileSdk
+        versionCode buildVersionCode
+        versionName buildVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //todo keystore
+            //storeFile rootProject.file(MYAPP_RELEASE_STORE_FILE)
+            //storePassword MYAPP_RELEASE_STORE_PASSWORD
+            //keyAlias MYAPP_RELEASE_KEY_ALIAS
+            //keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        }
+
+        debug {
+            minifyEnabled false
+            debuggable true
+            useProguard false
+        }
+        ext.betaDistributionGroupAliases = "canker_android_test"
+        ext.betaDistributionReleaseNotesFilePath = file("../change.log").absolutePath
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        production {
+            applicationId 'com.canker'
+            ext.betaDistributionApkFilePath =
+                    file("build/outputs/apk/production/release/app-production-release.apk")
+        }
+        internal {
+            applicationId 'com.canker.internal'
+            ext.betaDistributionApkFilePath =
+                    file("build/outputs/apk/internal/release/app-internal-release.apk")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility versions.sourceCompat
+        targetCompatibility versions.targetCompat
+    }
+
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':data')
+
+    kapt deps.android.roomCompiler
+    kapt deps.android.lifecycleCompiler
+    kapt deps.google.daggerProcessor
+    kapt deps.google.daggerAndroidProcessor
+    kapt deps.state.processor
+
+    // for local unit tests
+    testImplementation deps.test.junit
+    testImplementation deps.test.junitJupiter
+    testImplementation deps.test.atslRunner
+    testImplementation deps.test.atslRules
+    //testImplementation deps.test.androidxCore
+    testImplementation deps.test.robolectric
+    testImplementation deps.test.mockitoKotlin
+    testImplementation deps.test.mockWebServer
+    testImplementation "com.google.truth:truth:0.44"
+
+    // for instrumented tests
+    androidTestImplementation deps.test.espresso
+    androidTestImplementation deps.test.espressoIntents
+
+
+}
+
+
